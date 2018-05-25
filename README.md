@@ -1,5 +1,5 @@
 # A type definition for my personal project that using libsodium
-## Currently defined types
+## Currently defined functions
 * crypto_generichash
 * crypto_pwhash
 * crypto_pwhash_str
