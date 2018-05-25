@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "*": ["*"],
+      },
+      "moduleResolution": "node",
+      "outDir": "./dist/",
+      "noImplicitAny": true,
+      "module": "commonjs",
+      "target": "ES6",
+      "allowJs": true,
+      "lib": ["es2018","dom"],
+      "noEmit": false,
+      "sourceMap": true,
+      "typeRoots": [
+          "./@types",
+          "./node_modules/@types"
+      ]
+    },
+    "include": [
+      "./src/**/*"
+    ]
+  }
+  
