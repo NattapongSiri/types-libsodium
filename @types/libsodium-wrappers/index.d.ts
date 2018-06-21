@@ -4,8 +4,22 @@ declare module 'libsodium-wrappers' {
 
     export = sodium
 
+    class Base64Variants {
+        static ORIGINAL : number
+        static ORIGINAL_NO_PADDING : number
+        static URLSAFE : number
+        static URLSAFE_NO_PADDING : number
+    }
+
     interface Base extends Constants, Hashing, SecretKey, Utilities {
         ready : Promise<void>
+        base64_variants: {
+            ORIGINAL : Base64Variants
+            ORIGINAL_NO_PADDING : Base64Variants
+            URLSAFE : Base64Variants
+            URLSAFE_NO_PADDING : Base64Variants
+        }
+    
     }
 
     interface Constants {
@@ -48,9 +62,11 @@ declare module 'libsodium-wrappers' {
     }
 
     interface Utilities {
+        from_base64(str: string, options?: Base64Variants) : Buffer[]
         from_hex(str: string) : Buffer[]
         from_string(str : string) : Buffer[]
         randombytes_buf(size : number) : Buffer[]
+        to_base64(val: Buffer[], options?: Base64Variants) : string
         to_hex(val : Buffer[]) : string
         to_string(val: Buffer[]) : string
     }
