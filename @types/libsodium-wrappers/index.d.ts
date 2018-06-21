@@ -9,6 +9,9 @@ declare module 'libsodium-wrappers' {
     }
 
     interface Constants {
+        crypto_aead_xchacha20poly1305_ietf_ABYTES: number
+        crypto_aead_xchacha20poly1305_ietf_KEYBYTES: number
+        crypto_aead_xchacha20poly1305_ietf_NPUBBYTES: number
         crypto_box_SEEDBYTES : number
         crypto_pwhash_ALG_DEFAULT : number
         crypto_pwhash_ALG_ARGON2I13 : number
@@ -39,7 +42,9 @@ declare module 'libsodium-wrappers' {
     }
 
     interface SecretKey {
-
+        crypto_aead_xchacha20poly1305_ietf_decrypt(secretNounce: Buffer[], cipher: Buffer[], additionalData: Buffer[], nounce: Buffer[], key: Buffer[]) : Buffer[]
+        crypto_aead_xchacha20poly1305_ietf_encrypt(message: Buffer[], additionalData: Buffer[], secretNounce: Buffer[], nounce: Buffer[], key: Buffer[]) : Buffer[]
+        crypto_aead_xchacha20poly1305_ietf_keygen() : Buffer[]
     }
 
     interface Utilities {
@@ -47,5 +52,6 @@ declare module 'libsodium-wrappers' {
         from_string(str : string) : Buffer[]
         randombytes_buf(size : number) : Buffer[]
         to_hex(val : Buffer[]) : string
+        to_string(val: Buffer[]) : string
     }
 }
